@@ -1,0 +1,33 @@
+{
+  "name": "savings-management-system-client-application",
+  "version": "1.0.0",
+  "description": "1. Clone the repository: `git clone <repo-url>`\r 2. Install dependencies: `npm install`\r 3. Copy `.env.example` to `.env` and fill in the values (e.g., `MONGO_URI`, `JWT_SECRET`).\r 4. Start MongoDB locally or via Docker.\r 5. Run the server: `npm start`",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "node --watch --env-file=backend/.env backend/server.js"
+  },
+  "author": "kimenyi honore",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express-session": "^1.18.2",
+    "express.js": "^1.0.0",
+    "helmet": "^8.1.0",
+    "joi": "^18.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.20.0",
+    "mongoose": "^8.19.2",
+    "mongose": "^0.0.2-security",
+    "multer": "^2.0.2",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
