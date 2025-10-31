@@ -17,16 +17,15 @@ export default function Dashboard() {
 
     // Load user info and balance
     useEffect(() => {
-        const token = sessionStorage.getItem("token"); // use sessionStorage for session expiry
-        if (!token) return navigate("/login");
+    const token = sessionStorage.getItem("token");
+    if (!token) return navigate("/login");
 
-        const decoded = jwtDecode(token);
-        setUser({ name: decoded.name, email: decoded.email, id: decoded.id });
-        setMessage(`Welcome back, ${decoded.name}`);
+    const decoded = jwtDecode(token);
+    setUser({ name: decoded.name, email: decoded.email, id: decoded.id });
+    setMessage(`Welcome back, ${decoded.name}`);
 
-        fetchBalance();
-    }, []);
-
+    fetchBalance();
+    }, [navigate]);
 
     async function fetchBalance() {
         try {
