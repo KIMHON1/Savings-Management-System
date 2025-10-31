@@ -2,7 +2,6 @@
 import mongoose from 'mongoose';
 export async function connectDB(uri) {
     try {
-        // Mongoose connection options
         await mongoose.connect(uri, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
