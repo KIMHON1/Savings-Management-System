@@ -3,23 +3,18 @@
 # Savings Management System - Client Backend
 
 ## Setup Instructions
-1. Clone the repository: `git clone <repo-url>`
-2. Install dependencies: `npm install`
-3. Copy `.env.example` to `.env` and fill in the values (e.g., `MONGO_URI`, `JWT_SECRET`).
-4. Start MongoDB locally or via Docker.
-5. Run the server: `npm start`
+1. Clone the repository: git clone https://github.com/KIMHON1/Savings-Management-System-Client-Application
+2. Install dependencies: npm install
+3. For frontend cd frontend. 
+- Run the server: npm start.
+4. For backend cd backend. 
+- Run the server: npm run dev.
 
-## Endpoints
-- `POST /api/auth/register` - Register a new user
-- `POST /api/auth/login` - Login and get JWT
-- `POST /api/savings/deposit` - Deposit money
-- `POST /api/savings/withdraw` - Withdraw money
-- `GET /api/savings/balance` - Get balance
-- `GET /api/savings/history` - Get transaction history
+# Endpoints
+- POST /api/auth/register - Register a new user
+- POST /api/auth/login - Login and get JWT
+- POST /api/savings/deposit - Deposit money
+- POST /api/savings/withdraw - Withdraw money
+- GET /api/savings/balance - Get balance
+- GET /api/savings/history - Get transaction history
 
-## Running with Docker
-1. Build and run: `docker-compose up`
-2. Access at `http://localhost:5000`
-
-## Testing
-Run tests with: `npm test`
