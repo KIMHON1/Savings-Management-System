@@ -5,17 +5,16 @@ import deviceCheck from '../middlewares/deviceCheck.js';
 import validate from '../utils/validators.js';
 import { depositSchema, withdrawSchema } from '../dtos/transaction.js';
 
-const router = express.Router(); // <-- define router
+const router = express.Router();
 
-// Apply middlewares
 router.use(auth);
-router.use(deviceCheck); // optional to mark device usage
+router.use(deviceCheck);
 
 // Routes
 router.get('/history', transController.history);
 router.post('/deposit', validate(depositSchema), transController.deposit);
 router.post('/deposit/:txId/confirm', transController.confirmDeposit);
 router.post('/withdraw', validate(withdrawSchema), transController.withdraw);
+router.get('/balance', transController.getBalance);
 
-// ES module export
 export default router;

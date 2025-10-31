@@ -1,5 +1,4 @@
 import * as authService from '../services/auth.js';
-
 export async function register(req, res) {
     try {
         const user = await authService.register(req.validated);
@@ -8,18 +7,37 @@ export async function register(req, res) {
         return res.status(400).json({ error: err.message });
     }
 }
-
 export async function login(req, res) {
-    try {
-        const payload = { ...req.validated };
-        const result = await authService.login(payload);
-        if (result.requiresDeviceVerification) {
-            return res.status(200).json({ message: 'Device verification required', deviceId: result.deviceId });
+  try {
+    const payload = { ...req.validated };
+    const result = await authService.login(payload);
+
+    // Check if device is verified
+    if (!result.user.isVerified) {
+      return res.status(401).json({ 
+        message: 'Device not verified. Please contact admin.',
+        user: {
+          id: result.user._id,
+          email: result.user.email,
+          name: result.user.name,
+          isVerified: result.user.isVerified,
         }
-        return res.json({ token: result.token, user: { id: result.user._id, email: result.user.email, name: result.user.name }});
-    } catch (err) {
-        return res.status(400).json({ error: err.message });
+      });
     }
+
+    // Device verified — login successful
+    return res.json({
+      token: result.token,
+      user: {
+        id: result.user._id,
+        email: result.user.email,
+        name: result.user.name,
+        isVerified: result.user.isVerified,
+      },
+    });
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
 }
 
 export async function confirmDevice(req, res) {

@@ -4,7 +4,6 @@ class Alerts extends EventEmitter {}
 
 const alerts = new Alerts();
 
-// Example listeners (console). Replace with email/SMS/WebSocket as needed.
 alerts.on('depositConfirmed', ({ userId, transaction }) => {
     console.log(`[ALERT] Deposit confirmed for user ${userId}. Transaction ${transaction._id} amount ${transaction.amount}`);
 });

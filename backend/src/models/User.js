@@ -7,7 +7,7 @@ const userSchema = new Schema(
         password: { type: String, required: true },
         name: { type: String },
         balance: { type: Number, default: 0 },
-        isVerified: { type: Boolean, default: false }, // e.g., email verified
+        isVerified: { type: Boolean, default: false },
         createdAt: { type: Date, default: Date.now },
     },
     { timestamps: true }

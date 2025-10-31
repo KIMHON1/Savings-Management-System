@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const deviceSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    fingerprint: { type: String, required: true }, // e.g., user-agent + IP hash or custom token
+    fingerprint: { type: String, required: true },
     verified: { type: Boolean, default: false },
     verificationCode: { type: String }, // store code to verify device
     lastSeenAt: { type: Date, default: Date.now }
