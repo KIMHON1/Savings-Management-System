@@ -3,23 +3,22 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import authRoutes from './src/routes/auth.js';
 import transactionRoutes from './src/routes/transaction.js';
-
+import cors from "cors";
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://honorekimenyi_db_user:honorekimenyi_db_user@cluster0.owykcot.mongodb.net/user-client-db?retryWrites=true&w=majority';
-
+const MONGO_URI = process.env.MONGO_URI
+app.use(cors());
 app.use(express.json());
 
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/transactions', transactionRoutes);
 
-// Health check
 app.get('/', (req, res) => res.json({ ok: true }));
 
-// Global error handler
+
 app.use((err, req, res, next) => {
     console.error(err);
     res.status(500).json({ error: 'Internal server error' });
